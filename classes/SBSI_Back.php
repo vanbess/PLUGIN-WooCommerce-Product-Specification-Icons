@@ -31,6 +31,7 @@ class SBSI_Back
 
     /**
      * Adds a custom tab for our icons to the product edit screen
+     * 
      * @return $tabs
      */
     public static function sbsiProductTab($tabs)
@@ -47,6 +48,8 @@ class SBSI_Back
 
     /**
      * Renders content for custom product tab as registered in sbsiProductTab
+     * 
+     * @return html
      */
     public static function sbsiProductTabData()
     {
@@ -54,9 +57,6 @@ class SBSI_Back
         <div id="sbsi_product_icons" class="panel woocommerce_options_panel hidden">
 
             <form id="sbsi_icon_form" action="" enctype="multipart/form-data">
-                <button id="sbsi_add_icon" class="button">
-                    <?php echo __('Add another icon', 'woocommerce'); ?>
-                </button>
 
                 <div class="sbsi_icon_div">
                     <span>
@@ -65,7 +65,13 @@ class SBSI_Back
                     </span>
                 </div>
 
-                <input id="sbsi_submit" class="button button-primary" type="submit" value="<?php echo __('Attach Icon(s)', 'woocommerce'); ?>">
+                <div id="sbsi_btn_cont">
+                    <button id="sbsi_add_icon" class="button">
+                        <?php echo __('Add another icon', 'woocommerce'); ?>
+                    </button>
+                    <input id="sbsi_submit" class="button button-primary" type="submit" value="<?php echo __('Attach Icon(s)', 'woocommerce'); ?>">
+                </div>
+
             </form>
         </div>
 <?php
@@ -77,6 +83,8 @@ class SBSI_Back
 
     /**
      * Save icons via ajax submission
+     * 
+     * @return json
      */
     public static function saveIconsAjax()
     {
