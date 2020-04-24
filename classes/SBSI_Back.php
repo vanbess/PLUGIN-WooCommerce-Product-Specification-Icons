@@ -54,21 +54,20 @@ class SBSI_Back
         <div id="sbsi_product_icons" class="panel woocommerce_options_panel hidden">
 
             <form id="sbsi_icon_form" action="" enctype="multipart/form-data">
+                <button id="sbsi_add_icon" class="button">
+                    <?php echo __('Add another icon', 'woocommerce'); ?>
+                </button>
 
-                <label for="sbsi_icon_1"><?php echo __('Add icon', 'woocommerce'); ?></label>
-
-                <input id="sbsi_icon_1" name="sbsi_icon_1" type="file">
-
-                <button id="sbsi_add_icon" title="<?php echo __('Add icon') ?>">+</button>
-
-                <br>
+                <div class="sbsi_icon_div">
+                    <span>
+                        <label for="sbsi_icon">Select icon</label>
+                        <input class="sbsi_icon" name="sbsi_icon" type="file">
+                    </span>
+                </div>
 
                 <input id="sbsi_submit" class="button button-primary" type="submit" value="<?php echo __('Attach Icon(s)', 'woocommerce'); ?>">
-
             </form>
-
         </div>
-
 <?php
 
         // enqueue js and css
