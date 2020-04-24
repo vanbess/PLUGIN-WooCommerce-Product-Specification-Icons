@@ -9,7 +9,7 @@ input.sbsi_icon {
     display: block;
 }
 
-.sbsi_icon_div > span {
+#sbsi_icon_div > span {
     width: 29.3%;
     height: 100px;
     border: 1px solid #ccc;
@@ -50,11 +50,11 @@ button#sbsi_add_icon {
     margin-bottom: 30px;
 }
 
-.sbsi_icon_div > span:last-child {
+#sbsi_icon_div > span:last-child {
     margin-right: 0;
 }
 
-.sbsi_icon_div {
+#sbsi_icon_div {
     position: relative;
     left: 9px;
 }

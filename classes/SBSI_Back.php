@@ -56,9 +56,9 @@ class SBSI_Back
 ?>
         <div id="sbsi_product_icons" class="panel woocommerce_options_panel hidden">
 
-            <form id="sbsi_icon_form" action="" enctype="multipart/form-data">
+            <form id="sbsi_icon_form" action="saveIconsAjax" enctype="multipart/form-data">
 
-                <div class="sbsi_icon_div">
+                <div id="sbsi_icon_div">
                     <span>
                         <label for="sbsi_icon">Select icon</label>
                         <input class="sbsi_icon" name="sbsi_icon" type="file">
@@ -88,6 +88,12 @@ class SBSI_Back
      */
     public static function saveIconsAjax()
     {
+
+        if (isset($_POST)) :
+
+            echo 'data submitted.';
+
+        endif;
 
         wp_die();
     }

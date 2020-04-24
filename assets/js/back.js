@@ -1,15 +1,40 @@
 jQuery(document).ready(function ($) {
 
+    // setup form
+    $('#sbsi_product_icons').append('<form id="sbsi_icon_form" action="" enctype="multipart/form-data"></form>');
+    $('#sbsi_icon_form').append($('#sbsi_icon_div'));
+    $('#sbsi_icon_form').append($('#sbsi_btn_cont'));
+
     // add additional icon input
     $('#sbsi_add_icon').click(function (e) {
         e.preventDefault();
 
-        var sbsiHtml = '<span><label for="sbsi_icon">Select icon</label><input id="sbsi_icon" name="sbsi_icon" type="file"><a href="javascript:void(0);" class="sbsi_remove" title="Remove">-</a></span>';
-        $('.sbsi_icon_div').append(sbsiHtml);
+        var sbsiHtml = '<span><label for="sbsi_icon">Select icon</label><input id="sbsi_icon" name="sbsi_icon" type="file"><a href="javascript:void(0);" class="sbsi_remove" title="Remove">x</a></span>';
+        $('#sbsi_icon_div').append(sbsiHtml);
     });
 
     // remove additional icon
-    $(document).on("click", "a.sbsi_remove" , function() {
+    $(document).on("click", "a.sbsi_remove", function () {
         $(this).parent().remove();
+    });
+
+    // submit icon form
+    $('form#sbsi_icon_form').submit(function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            type: "post",
+            url: ajaxurl,
+            data: formData,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (response) {
+                console.log(response);
+            }
+        });
+
     });
 });
