@@ -22,6 +22,9 @@ jQuery(document).ready(function ($) {
 
     // submit icon form
     $('form#sbsi_icon_form').submit(function (e) {
+
+        $('input#sbsi_submit').val('Processing...');
+
         e.preventDefault();
 
         var formData = new FormData(this);
@@ -35,7 +38,8 @@ jQuery(document).ready(function ($) {
             processData: false,
             cache: false,
             success: function (response) {
-                console.log(response);
+                alert(response);
+                location.reload();
             }
         }); 
     });

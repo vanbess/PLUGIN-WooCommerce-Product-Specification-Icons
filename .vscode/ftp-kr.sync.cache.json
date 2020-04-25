@@ -1,0 +1,190 @@
+{
+  "sftp://51.79.82.91:22@dev_nordace": {
+    "home": {
+      "dev": {
+        "web": {
+          "dev.nordace.com": {
+            "public_html": {
+              "wp-content": {
+                "plugins": {
+                  "disable-feeds": {},
+                  "google-sitemap-generator": {},
+                  "secondary-title": {},
+                  "easy-theme-and-plugin-upgrades": {},
+                  "sbbg-shipping": {},
+                  "elfsight-instagram-testimonials-cc": {},
+                  "polylang-wc": {},
+                  "masonry-reviews": {},
+                  "wp-crontrol": {},
+                  "display-all-image-sizes": {},
+                  "adyen-af": {},
+                  "sb-prod-size": {},
+                  "sb-wc-upsell": {},
+                  "regenerate-thumbnails": {},
+                  "loco-translate": {},
+                  "toggle-wpautop": {},
+                  "rvg-optimize-database": {},
+                  "redre-target": {},
+                  "scalability-pro": {},
+                  "index.php": {
+                    "type": "-",
+                    "size": 28,
+                    "lmtime": 0,
+                    "modified": false
+                  },
+                  "integrate-gravity-forms-polylang": {},
+                  "facebook-messenger-chat-with-bot": {},
+                  "code-snippets": {},
+                  "xl-woocommerce-sales-triggers-null.txt": {
+                    "type": "-",
+                    "size": 364,
+                    "lmtime": 0,
+                    "modified": false
+                  },
+                  "woocommerce-sequential-order-numbers-pro": {},
+                  "disable-post-locking": {},
+                  "comment-images-reloaded": {},
+                  "woocommerce-pdf-invoices-packing-slips": {},
+                  "disable-xml-rpc-pingback": {},
+                  "theme-translation-for-polylang": {},
+                  "query-monitor": {},
+                  "paypal-ipn": {},
+                  "gravityforms": {},
+                  "ssl-insecure-content-fixer": {},
+                  "woocommerce": {},
+                  "mautic-woocommerce-marketing-automation": {},
+                  "wc-duplicate-order": {},
+                  "woocommerce-shipment-tracking": {},
+                  "mautic-woocommerce-marketing-automation-2.zip": {
+                    "type": "-",
+                    "size": 603900,
+                    "lmtime": 0,
+                    "modified": false
+                  },
+                  "cloudflare": {},
+                  "rac": {},
+                  "sb-wc-improved-notices": {},
+                  "classic-editor": {},
+                  "cloudflare-flexible-ssl": {},
+                  "sb-spec-icons": {
+                    "README.md": {
+                      "type": "-",
+                      "size": 58,
+                      "lmtime": 0,
+                      "modified": false
+                    },
+                    "assets": {
+                      "js": {
+                        "front.js": {
+                          "type": "-",
+                          "size": 48,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "back.js": {
+                          "type": "-",
+                          "size": 1504,
+                          "lmtime": 1587812457730,
+                          "modified": false
+                        }
+                      },
+                      "css": {
+                        "front.css": {
+                          "type": "-",
+                          "size": 0,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "back.css": {
+                          "type": "-",
+                          "size": 1336,
+                          "lmtime": 0,
+                          "modified": false
+                        }
+                      }
+                    },
+                    "classes": {
+                      "SBSI_Front.php": {
+                        "type": "-",
+                        "size": 141,
+                        "lmtime": 0,
+                        "modified": false
+                      },
+                      "SBSI_Back.php": {
+                        "type": "-",
+                        "size": 5769,
+                        "lmtime": 1587813016794,
+                        "modified": false
+                      }
+                    },
+                    "uploads": {
+                      "icon2.jpg": {
+                        "type": "-",
+                        "size": 10631,
+                        "lmtime": 0,
+                        "modified": false
+                      },
+                      "icon3.jpg": {
+                        "type": "-",
+                        "size": 8395,
+                        "lmtime": 0,
+                        "modified": false
+                      },
+                      "icon1.jpg": {
+                        "type": "-",
+                        "size": 9855,
+                        "lmtime": 0,
+                        "modified": false
+                      }
+                    },
+                    "sb-spec-icons.php": {
+                      "type": "-",
+                      "size": 487,
+                      "lmtime": 0,
+                      "modified": false
+                    }
+                  },
+                  "sb-order-merge-alt": {},
+                  "advanced-database-cleaner": {},
+                  "sb-payme": {},
+                  "sb-woo-bulk-order-status": {},
+                  "unlist-posts": {},
+                  "polylang-theme-strings": {},
+                  "wp-filters-extras": {},
+                  "sb-wc-adyen": {},
+                  "sb-order-confirmation-upsell": {},
+                  "delete-expired-transients": {},
+                  "woocommerce-colororimage-variation-select": {},
+                  "currency-switcher-woocommerce-pro": {},
+                  "mobble-shortcodes": {},
+                  "mobble": {},
+                  "user-role-editor": {},
+                  "polylang-pro": {},
+                  "fast-velocity-minify": {},
+                  "wp-youtube-lyte": {},
+                  "woocommerce-auto-added-coupons": {},
+                  "disable-admin-notices": {},
+                  "wp-meta-and-date-remover": {},
+                  "default_library_puvox.php": {
+                    "type": "-",
+                    "size": 334218,
+                    "lmtime": 0,
+                    "modified": false
+                  },
+                  "wpml-to-polylang": {},
+                  "woo-order-weight": {},
+                  "yith-woocommerce-custom-order-status-premium": {},
+                  "duracelltomi-google-tag-manager": {},
+                  "iconic-woothumbs": {},
+                  "addon-rac": {},
+                  "wp-redis": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$version": 1
+}

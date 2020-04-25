@@ -53,8 +53,26 @@ class SBSI_Back
      */
     public static function sbsiProductTabData()
     {
+
+        // get attached icons
+        $attached_icons = get_post_meta($_GET['post'], 'sbsi_icons', true);
+
+        if ($attached_icons) :
+            $icon_url_arr = unserialize($attached_icons);
+        endif;
 ?>
         <div id="sbsi_product_icons" class="panel woocommerce_options_panel hidden">
+
+            <?php
+            if ($icon_url_arr && is_array($icon_url_arr) || is_object($icon_url_arr)) :
+                foreach ($icon_url_arr as $icon_url) : ?>
+                    <div class="sbsi_icon_img_cont">
+                        <a href="javascript:void(0);" title="<?php echo __('Remove icon', 'woocommerce'); ?>">x</a>
+                        <img class="sbsi_icon_img" src="<?php echo $icon_url; ?>" alt="">
+                    </div>
+            <?php endforeach;
+            endif;
+            ?>
 
             <form id="sbsi_icon_form" action="saveIconsAjax" enctype="multipart/form-data">
 
@@ -69,6 +87,7 @@ class SBSI_Back
                     <button id="sbsi_add_icon" class="button">
                         <?php echo __('Add another icon', 'woocommerce'); ?>
                     </button>
+                    <input type="hidden" name="product_id" value="<?php echo $_GET['post'] ?>">
                     <input id="sbsi_submit" class="button button-primary" type="submit" value="<?php echo __('Attach Icon(s)', 'woocommerce'); ?>">
                 </div>
 
@@ -90,30 +109,64 @@ class SBSI_Back
     {
         if (isset($_POST)) :
 
-            $target_dir = SBSI_PATH . 'uploads/';
+            // get product id
+            $product_id = $_POST['product_id'];
 
+            // get wp upload directory path and urls
+            $upload_dir = wp_upload_dir();
+            $target_dir = $upload_dir['path'] . '/';
+            $target_url = $upload_dir['url'] . '/';
+
+            // file name and url arrays
             $file_name_arr = [];
             $file_url_arr = [];
+            $files_moved_arr = [];
 
-
+            // loop through $_FILES to get file name and push to file name array
             foreach ($_FILES as $key => $value) :
                 $file_name_arr[] = $key;
             endforeach;
 
+            $file_count = 0;
+
+            // loop through file name array and insert uploaded files one by one
             foreach ($file_name_arr as $file_name) :
 
                 $target_file = $target_dir . basename($_FILES[$file_name]["name"]);
 
-                if (move_uploaded_file($_FILES[$file_name]["tmp_name"], $target_file)) {
-                    echo "The file " . basename($_FILES[$file_name]["name"]) . " has been uploaded.";
-                } else {
-                    echo "Sorry, there was an error uploading your file.";
-                }
+                // define file url and push to file url array
+                $file_url_arr[] = $target_url . basename($_FILES[$file_name]["name"]);
+
+                // move uploaded files
+                $files_moved_arr[$file_name] = move_uploaded_file($_FILES[$file_name]["tmp_name"], $target_file);
+
+                $file_count++;
 
             endforeach;
+
+            // check if files were moved successfully by getting files moved count and comparing to submitted file count
+            $files_moved_count = count($files_moved_arr);
+
+            if ($files_moved_count == $file_count) :
+
+                $urls_serialized = serialize($file_url_arr);
+
+                if ($urls_serialized) :
+
+                    $icons_attached = update_post_meta($product_id, 'sbsi_icons', $urls_serialized);
+
+                    if ($icons_attached) :
+                        echo __('Icons successfully attached.', 'woocommerce');
+                    endif;
+
+                endif;
+            else :
+                echo __('File upload failed. Please try again.', 'woocommerce');
+            endif;
+
         endif;
         wp_die();
     }
-} 
+}
 
 SBSI_Back::init();

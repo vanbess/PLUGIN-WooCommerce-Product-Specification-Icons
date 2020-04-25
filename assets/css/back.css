@@ -1,0 +1,75 @@
+div#sbsi_product_icons label {
+    margin: initial;
+    display: block;
+    width: initial;
+    font-weight: 700;
+}
+
+input.sbsi_icon {
+    display: block;
+}
+
+#sbsi_icon_div > span {
+    width: 29.3%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 1%;
+    margin-right: 19px;
+    margin-bottom: 25px;
+    float: left;
+    position: relative;
+}
+
+div#sbsi_product_icons {
+    padding: 30px;
+}
+
+div#sbsi_btn_cont {
+    clear: both;
+}
+
+input#sbsi_submit {
+    display: inline-block;
+    width: 48%;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-left: 0;
+    position: relative;
+    left: 30px;
+}
+
+button#sbsi_add_icon {
+    display: inline-block;
+    width: 48%;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+#sbsi_icon_div > span:last-child {
+    margin-right: 0;
+}
+
+#sbsi_icon_div {
+    position: relative;
+    left: 9px;
+}
+
+a.sbsi_remove {
+    text-decoration: none;
+    color: white;
+    background: #de0c0c;
+    display: block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 1px 2px #0000006e;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
