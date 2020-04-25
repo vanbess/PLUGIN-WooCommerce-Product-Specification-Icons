@@ -67,7 +67,7 @@ class SBSI_Back
             if ($icon_url_arr && is_array($icon_url_arr) || is_object($icon_url_arr)) :
                 foreach ($icon_url_arr as $icon_url) : ?>
                     <div class="sbsi_icon_img_cont">
-                        <a href="javascript:void(0);" title="<?php echo __('Remove icon', 'woocommerce'); ?>">x</a>
+                        <a class="sbsi_del_icon" href="javascript:void(0);" title="<?php echo __('Remove icon', 'woocommerce'); ?>">x</a>
                         <img class="sbsi_icon_img" src="<?php echo $icon_url; ?>" alt="">
                     </div>
             <?php endforeach;
@@ -77,7 +77,7 @@ class SBSI_Back
             <form id="sbsi_icon_form" action="saveIconsAjax" enctype="multipart/form-data">
 
                 <div id="sbsi_icon_div">
-                    <span>
+                    <span class="sbsi_icon_span">
                         <label for="sbsi_icon">Select icon</label>
                         <input class="sbsi_icon" name="sbsi_icon" type="file">
                     </span>
@@ -89,6 +89,9 @@ class SBSI_Back
                     </button>
                     <input type="hidden" name="product_id" value="<?php echo $_GET['post'] ?>">
                     <input id="sbsi_submit" class="button button-primary" type="submit" value="<?php echo __('Attach Icon(s)', 'woocommerce'); ?>">
+                    <button id="sbsi_del_icons" class="button" title="<?php echo __('Delete all icons/images', 'woocommerce'); ?>">
+                        <?php echo __('Delete all', 'woocommerce'); ?>
+                    </button>
                 </div>
 
             </form>
@@ -163,6 +166,18 @@ class SBSI_Back
             else :
                 echo __('File upload failed. Please try again.', 'woocommerce');
             endif;
+
+        endif;
+        wp_die();
+    }
+
+    /**
+     * Function which deletes some or all icons via Ajax
+     */
+    public static function sbsiDelIcons()
+    {
+        if (isset($_POST)) :
+
 
         endif;
         wp_die();
