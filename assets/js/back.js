@@ -11,7 +11,7 @@ jQuery(document).ready(function ($) {
 
         var random = Math.floor(Math.random() * 10000);
 
-        var sbsiHtml = '<span><label for="sbsi_icon_'+random+'">Select icon</label><input id="sbsi_icon_'+random+'" name="sbsi_icon_'+random+'" type="file"><a href="javascript:void(0);" class="sbsi_remove" title="Remove">x</a></span>';
+        var sbsiHtml = `<span><label for=\\"sbsi_icon_${random}\\">Select icon</label><input id=\\"sbsi_icon_${random}\\" name=\\"sbsi_icon_${random}\\" type=\\"file\\"><a href=\\"javascript:void(0);\\" class=\\"sbsi_remove\\" title=\\"Remove\\">x</a></span>`;
         $('#sbsi_icon_div').append(sbsiHtml);
     });
 
