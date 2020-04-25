@@ -91,7 +91,7 @@ class SBSI_Back
 
         if (isset($_POST)) :
 
-            echo 'data submitted.';
+            print_r($_FILES);
 
         endif;
 

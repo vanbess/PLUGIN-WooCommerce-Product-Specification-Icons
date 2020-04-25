@@ -9,7 +9,9 @@ jQuery(document).ready(function ($) {
     $('#sbsi_add_icon').click(function (e) {
         e.preventDefault();
 
-        var sbsiHtml = '<span><label for="sbsi_icon">Select icon</label><input id="sbsi_icon" name="sbsi_icon" type="file"><a href="javascript:void(0);" class="sbsi_remove" title="Remove">x</a></span>';
+        var random = Math.floor(Math.random() * 10000);
+
+        var sbsiHtml = '<span><label for="sbsi_icon_'+random+'">Select icon</label><input id="sbsi_icon_'+random+'" name="sbsi_icon_'+random+'" type="file"><a href="javascript:void(0);" class="sbsi_remove" title="Remove">x</a></span>';
         $('#sbsi_icon_div').append(sbsiHtml);
     });
 
@@ -23,6 +25,7 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
 
         var formData = new FormData(this);
+        formData.append('action', 'saveIconsAjax');
 
         $.ajax({
             type: "post",
