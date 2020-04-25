@@ -170,18 +170,6 @@ class SBSI_Back
         endif;
         wp_die();
     }
-
-    /**
-     * Function which deletes some or all icons via Ajax
-     */
-    public static function sbsiDelIcons()
-    {
-        if (isset($_POST)) :
-
-
-        endif;
-        wp_die();
-    }
 }
 
 SBSI_Back::init();
