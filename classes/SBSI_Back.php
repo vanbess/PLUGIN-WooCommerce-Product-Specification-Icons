@@ -23,6 +23,8 @@ class SBSI_Back
         // ajax
         add_action('wp_ajax_saveIconsAjax', [__CLASS__, 'saveIconsAjax']);
         add_action('wp_ajax_nopriv_saveIconsAjax', [__CLASS__, 'saveIconsAjax']);
+        add_action('wp_ajax_sbsiDeleteIcons', [__CLASS__, 'sbsiDeleteIcons']);
+        add_action('wp_ajax_nopriv_sbsiDeleteIcons', [__CLASS__, 'sbsiDeleteIcons']);
 
         // custom product tabs
         add_filter('woocommerce_product_data_tabs', [__CLASS__, 'sbsiProductTab']);
@@ -53,10 +55,10 @@ class SBSI_Back
      */
     public static function sbsiProductTabData()
     {
-
         // get attached icons
-        $attached_icons = get_post_meta($_GET['post'], 'sbsi_icons', true);
+        $product_id = get_the_ID();
 
+        $attached_icons = get_post_meta($product_id, 'sbsi_icons', true);
         if ($attached_icons) :
             $icon_url_arr = unserialize($attached_icons);
         endif;
@@ -67,7 +69,7 @@ class SBSI_Back
             if ($icon_url_arr && is_array($icon_url_arr) || is_object($icon_url_arr)) :
                 foreach ($icon_url_arr as $icon_url) : ?>
                     <div class="sbsi_icon_img_cont">
-                        <a class="sbsi_del_icon" href="javascript:void(0);" title="<?php echo __('Remove icon', 'woocommerce'); ?>">x</a>
+                        <a class="sbsi_del_icon" icon_url="<?php echo $icon_url; ?>" href="javascript:void(0);" title="<?php echo __('Remove icon', 'woocommerce'); ?>">x</a>
                         <img class="sbsi_icon_img" src="<?php echo $icon_url; ?>" alt="">
                     </div>
             <?php endforeach;
@@ -75,25 +77,32 @@ class SBSI_Back
             ?>
 
             <form id="sbsi_icon_form" action="saveIconsAjax" enctype="multipart/form-data">
-
-                <div id="sbsi_icon_div">
-                    <span class="sbsi_icon_span">
-                        <label for="sbsi_icon">Select icon</label>
-                        <input class="sbsi_icon" name="sbsi_icon" type="file">
-                    </span>
-                </div>
+                <?php
+                if (!$icon_url_arr) : ?>
+                    <div id="sbsi_icon_div">
+                        <span class="sbsi_icon_span">
+                            <label for="sbsi_icon">Select icon</label>
+                            <!-- <input class="sbsi_icon" name="sbsi_icon[]" type="file" multiple> -->
+                            <input class="sbsi_icon" name="sbsi_icon" type="file">
+                        </span>
+                    </div>
+                <?php endif; ?>
 
                 <div id="sbsi_btn_cont">
-                    <button id="sbsi_add_icon" class="button">
-                        <?php echo __('Add another icon', 'woocommerce'); ?>
-                    </button>
-                    <input type="hidden" name="product_id" value="<?php echo $_GET['post'] ?>">
-                    <input id="sbsi_submit" class="button button-primary" type="submit" value="<?php echo __('Attach Icon(s)', 'woocommerce'); ?>">
-                    <button id="sbsi_del_icons" class="button" title="<?php echo __('Delete all icons/images', 'woocommerce'); ?>">
-                        <?php echo __('Delete all', 'woocommerce'); ?>
-                    </button>
-                </div>
+                    <input type="hidden" id="product_id" name="product_id" value="<?php echo get_the_ID(); ?>">
 
+                    <?php
+                    if (!$icon_url_arr) : ?>
+                        <button id="sbsi_add_icon" class="button">
+                            <?php echo __('Add another icon', 'woocommerce'); ?>
+                        </button>
+                        <input id="sbsi_submit" class="button button-primary" type="submit" value="<?php echo __('Attach Icon(s)', 'woocommerce'); ?>">
+                    <?php else : ?>
+                        <button id="sbsi_del_icons" class="button" title="<?php echo __('Delete all icons/images', 'woocommerce'); ?>">
+                            <?php echo __('Delete all', 'woocommerce'); ?>
+                        </button>
+                    <?php endif; ?>
+                </div>
             </form>
         </div>
 <?php
@@ -110,7 +119,7 @@ class SBSI_Back
      */
     public static function saveIconsAjax()
     {
-        if (isset($_POST)) :
+        if (!empty($_POST)) :
 
             // get product id
             $product_id = $_POST['product_id'];
@@ -168,6 +177,52 @@ class SBSI_Back
             endif;
 
         endif;
+        wp_die();
+    }
+
+    /**
+     * Bulk or single delete icons via ajax
+     */
+    public static function sbsiDeleteIcons()
+    {
+        // delete single icon
+        if (!empty($_POST['icon_url'])) :
+
+            // vars
+            $icon_url = $_POST['icon_url'];
+            $product_id = $_POST['product_id'];
+            $icon_list = get_post_meta($product_id, 'sbsi_icons', true);
+            $icon_url_arr = unserialize($icon_list);
+
+            // remove particular url from icon url arr using array_diff
+            $updated_icon_url_arr = array_diff($icon_url_arr, [$icon_url]);
+
+            // serialize updated array
+            $serialize = serialize($updated_icon_url_arr);
+
+            // update post meta
+            $product_updated = update_post_meta($product_id, 'sbsi_icons', $serialize);
+
+            // if update successful, return deleted icon url
+            if ($product_updated) :
+                echo __('Icon deleted', 'woocommerce');
+            else :
+                echo __('Could not delete icon. Please try again.', 'woocommerce');
+            endif;
+
+        // delete all icons
+        elseif (!empty($_POST['del_icons'])) :
+
+            $product_id = $_POST['product_id'];
+            $icons_deleted = delete_post_meta($product_id, 'sbsi_icons');
+
+            if ($icons_deleted) :
+                echo __('Icons successfully deleted', 'woocommerce');
+            else :
+                echo __('Icons could not be deleted. Please try again.', 'woocommerce');
+            endif;
+        endif;
+
         wp_die();
     }
 }

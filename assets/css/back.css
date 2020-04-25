@@ -32,15 +32,30 @@ div#sbsi_btn_cont {
     clear: both;
 }
 
-button#sbsi_add_icon, button#sbsi_del_icons, input#sbsi_submit {
-    display: inline-block;
+button#sbsi_del_icons{
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
     margin-bottom: 30px;
     letter-spacing: 1px;
     margin-left: 0;
-    width: 33%;
+    width: 98.5%;
+    position: relative;
+    left: 8px;
+} 
+
+button#sbsi_add_icon, input#sbsi_submit {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    letter-spacing: 1px;
+    margin-left: 0;
+    width: 49%;
+    position: relative;
+    left: 8px;
 } 
 
 #sbsi_icon_div {
