@@ -1,0 +1,14 @@
+div#sbsi_icon_img_cont {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+div#sbsi_icon_div_front > h1 {
+    padding-top: 25px;
+}
+
+#sbsi_icon_img_cont > div > div > img {
+    width: 100%;
+    height: auto;
+}
