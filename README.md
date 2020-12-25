@@ -1,4 +1,4 @@
-# WC-Spec-Icons
+# SBWC Product Specification Icons
 WooCommerce product specification icons
 
 
