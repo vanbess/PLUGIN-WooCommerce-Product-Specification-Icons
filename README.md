@@ -1,4 +1,4 @@
-# SBWC Product Specification Icons
+# PLUGIN: Product Specification Icons
 WooCommerce product specification icons
 
 
